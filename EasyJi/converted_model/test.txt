@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+  <script>
+    async function testModel() {
+      try {
+        const model = await tf.loadLayersModel("converted_model/model.json");
+        console.log("✅ Model loaded successfully", model.summary());
+      } catch (err) {
+        console.error("❌ Error loading model:", err);
+      }
+    }
+    testModel();
+  </script>
+</body>
+</html>

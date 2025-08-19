@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ECG Model Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.18.0"></script>
+</head>
+<body>
+  <h2>Testing ECG Model in Browser</h2>
+  <div id="status">Loading model...</div>
+
+  <script>
+    async function run() {
+      try {
+        // Load the converted model
+        const model = await tf.loadLayersModel("./converted_model/model.json");
+        console.log("✅ Model loaded successfully:", model);
+        document.getElementById("status").innerText = "✅ Model loaded successfully";
+
+        // Expected input: [batch, 4096 timesteps, 12 leads]
+        const dummyInput = tf.randomNormal([1, 4096, 12]);
+
+        // Run inference
+        const prediction = model.predict(dummyInput);
+
+        prediction.print(); // log to console
+        console.log("✅ Prediction done:", prediction);
+
+      } catch (err) {
+        console.error("❌ Error loading model:", err);
+        document.getElementById("status").innerText = "❌ Error: " + err.message;
+      }
+    }
+
+    run();
+  </script>
+</body>
+</html>
