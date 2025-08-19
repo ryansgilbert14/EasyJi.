@@ -1,0 +1,63 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Testing Converted Model</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.18.0"></script>
+</head>
+<body>
+  <h2>Testing Converted Model</h2>
+  <script>
+    async function run() {
+      try {
+        console.log("Loading model...");
+        // point to the converted_model folder
+        const model = await tf.loadLayersModel("converted_model/model.json");
+        console.log("✅ Model loaded successfully:", model);
+
+        // Example: run dummy prediction
+        const input = tf.zeros([1, 224, 224, 3]); // adjust shape for your model
+        const output = model.predict(input);
+        output.print();
+
+      } catch (err) {
+        console.error("❌ Error loading model:", err);
+      }
+    }
+    run();
+  </script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Testing Converted Model</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.18.0"></script>
+</head>
+<body>
+  <h2>Testing Converted Model</h2>
+  <script>
+    async function run() {
+      try {
+        console.log("Loading model...");
+        // point to the converted_model folder
+        const model = await tf.loadLayersModel("converted_model/model.json");
+        console.log("✅ Model loaded successfully:", model);
+
+        // Example: run dummy prediction
+        const input = tf.zeros([1, 224, 224, 3]); // adjust shape for your model
+        const output = model.predict(input);
+        output.print();
+
+      } catch (err) {
+        console.error("❌ Error loading model:", err);
+      }
+    }
+    run();
+  </script>
+</body>
+</html>
+>>>>>>> 304bb8a5d8f183c93a3549f79a5a95ef9295096c
